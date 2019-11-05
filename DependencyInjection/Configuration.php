@@ -17,8 +17,12 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
-        $treeBuilder->root('liuggio_excel');
+        $treeBuilder = new TreeBuilder('liuggio_excel');
+        
+        // BC layer for symfony/config < 4.2
+        if (!\method_exists($treeBuilder, 'getRootNode')) {
+            $treeBuilder->root('liuggio_excel')
+        }
 
         return $treeBuilder;
     }
