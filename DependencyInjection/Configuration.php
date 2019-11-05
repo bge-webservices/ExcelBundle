@@ -21,7 +21,7 @@ class Configuration implements ConfigurationInterface
         
         // BC layer for symfony/config < 4.2
         if (!\method_exists($treeBuilder, 'getRootNode')) {
-            $treeBuilder->root('liuggio_excel')
+            $treeBuilder->root('liuggio_excel');
         }
 
         return $treeBuilder;
